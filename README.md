@@ -1,7 +1,33 @@
-# video-trimming
-This Python code loops through all the video files in an input folder and trims the first 5 seconds of each video. It then saves the trimmed videos to an output folder using the same video format as the input videos
-The code first uses the os module to list all files in the input folder and filters out files that do not end with the .mp4 extension (or any other video file format). It then sets the input and output video paths using the os.path.join() method.
+# Video Trimming Script
 
-Next, the code loads the input video file using OpenCV's cv2.VideoCapture() method and extracts its properties, such as the frames per second and total number of frames, using the video capture object's get() method. It also sets the starting and ending frame numbers to trim the first 5 seconds of the video.
+This Python script trims the first 5 seconds of each video file in a specified input folder and saves the trimmed videos to a designated output folder. The script uses OpenCV for video processing.
 
-The code creates a VideoWriter object to save the output video file with the same format as the input video using the cv2.VideoWriter() method. It then sets the starting frame using the video capture object's set() method and loops through the frames from the starting frame to the ending frame, reading each frame using the video capture object's read() method and writing it to the output video using the VideoWriter object's write() method.
+## Input and Output Folders
+
+- `input_folder`: The path to the folder containing the original video files.
+- `output_folder`: The path to the folder where trimmed videos will be saved.
+
+## Code Overview
+
+1. **Folder Setup:**
+   - Set the paths for the input and output folders (`input_folder` and `output_folder`).
+   - Create the output folder if it doesn't exist.
+
+2. **Video Trimming:**
+   - Loop through all video files in the input folder.
+   - For each video file with the '.mp4' extension:
+     - Open the input video file using OpenCV (`cv2.VideoCapture`).
+     - Get video properties such as frames per second (fps) and total frame count.
+     - Set the starting and ending frame numbers for trimming (trim the first 5 seconds).
+     - Create a VideoWriter object to save the trimmed video file.
+     - Loop through the frames between the starting and ending frames, writing them to the output video file.
+     - Release the input and output video objects.
+
+3. **Execution:**
+   - Replace 'videos' with the path to the actual directory containing the original video files.
+   - Replace 'trimmed_videos' with the path to the desired output directory.
+   - Execute the script to trim the first 5 seconds of each video and save the trimmed videos in the output folder.
+
+## Note
+- The script assumes that the input videos are in the '.mp4' format. You can modify the condition `if filename.endswith('.mp4')` to match the format of your input videos.
+
